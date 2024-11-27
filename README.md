@@ -20,9 +20,13 @@ Usage
 Run the script as follows:
 
 bash
-Copy code
 python process_video.py input_video.mp4 frames.csv output_video.mp4
 Inputs
 input_video.mp4: Path to the input video file.
 frames.csv: CSV file specifying frame numbers and their values (1 for live frames, 0 for skipped frames).
 output_video.mp4: Path to save the processed video.
+
+## Usage
+Run the script with the following command:
+```bash
+python process_video.py input_video.mp4 frames.csv output_video.mp4
