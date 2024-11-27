@@ -4,7 +4,9 @@ This project processes a video to extract and incorporate only "live" frames (as
 
 Features
 Frame Filtering: Processes frames marked as "live" (value = 1) in the input CSV file.
+![](predictions_comparison.png)
 Smooth Transitions: Generates smooth fade transitions between non-consecutive "live" frames.
+![](filter_predictions_result.png)
 Customizable Output: Saves the processed video with transitions to a specified output file.
 How It Works
 Parses a CSV file where each row specifies the frame number and whether it should be included in the final output.
