@@ -1,5 +1,5 @@
 # Video Processing with Smooth Transitions
-
+!(readme_image.webp)
 This project processes a video to extract and incorporate only "live" frames (as specified in a CSV file) while applying smooth transitions between frames with hard cuts. The transitions are implemented using fade effects to ensure seamless playback.
 
 Features
