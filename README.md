@@ -17,7 +17,6 @@ This repository contains a comprehensive solution for creating **automatic highl
 - [Usage](#usage)
 - [Code Details](#code-details)
 - [Contributing](#contributing)
-- [License](#license)
 
 ---
 
