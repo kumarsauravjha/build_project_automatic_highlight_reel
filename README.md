@@ -6,7 +6,7 @@ This repository contains a comprehensive solution for creating **automatic highl
 [![Watch the Demo Video](Screenshot%202024-12-04%20041631.jpg)](https://drive.google.com/file/d/11Wp242goVy7uF3vQu5haH9_fiUbHLrXN/view?usp=sharing)  
 *Click on the image above to watch the demo video.*
 
-[![Another Demo with effects]()](https://drive.google.com/file/d/11Wp242goVy7uF3vQu5haH9_fiUbHLrXN/view?usp=sharing)  
+[![Another Demo with effects]](https://drive.google.com/file/d/11Wp242goVy7uF3vQu5haH9_fiUbHLrXN/view?usp=sharing)  
 ---
 
 ## **Table of Contents**
