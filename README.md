@@ -22,7 +22,7 @@ This repository contains a comprehensive solution for creating **automatic highl
 ---
 
 ## **Overview**
-The **Automatic Highlight Reel** project automates the process of identifying key moments in video footage, applying animations, and generating engaging highlight videos. This is especially useful for sports, events, or any scenario requiring quick post-processing of large video datasets.
+The **Automatic Highlight Reel** is a downstream project that automates the identification of key moments in video footage, applying animations, and generating engaging highlight videos. This is especially useful for sports, events, or any scenario requiring quick post-processing of large video datasets.
 
 Key components include:
 - Time classification for event detection.
