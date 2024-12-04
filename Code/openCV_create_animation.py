@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import csv
 import pandas as pd
-
+import matplotlib.pyplot as plt
 # %%
 def create_transition(frame1, frame2, transition_type='fade', duration_frames=30):
     """Create a smooth transition between two frames."""
@@ -20,26 +20,12 @@ def create_transition(frame1, frame2, transition_type='fade', duration_frames=30
     return transition_frames
 
 #%%
-def apply_cartoon(frame):
-    # Convert to grayscale
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    # Apply median blur
-    gray = cv2.medianBlur(gray, 7)
-    # Detect edges
-    edges = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 9, 9)
-    # Smooth the original frame
-    color = cv2.bilateralFilter(frame, 9, 250, 250)
-    # Combine edges and smoothed color
-    cartoon = cv2.bitwise_and(color, color, mask=edges)
-    return cartoon
+def add_text_for_duration(frame, text, frame_number, start_frame, end_frame, position, font_scale=1, color=(0, 255, 0), thickness=2):
+    """Add text to a frame for a specific duration."""
+    if start_frame <= frame_number <= end_frame:
+        cv2.putText(frame, text, position, cv2.FONT_HERSHEY_SIMPLEX, font_scale, color, thickness)
+    return frame
 
-#%%
-def apply_invert(frame):
-    return cv2.bitwise_not(frame)
-
-#%%
-def apply_grayscale(frame):
-    return cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 # %%
 def main(input_video, csv_file, output_video, transition_frames=30):
     """Main function to process the video and add transitions."""
@@ -59,6 +45,7 @@ def main(input_video, csv_file, output_video, transition_frames=30):
     fps = int(cap.get(cv2.CAP_PROP_FPS))
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
     new_fps = int(fps*1.2)
     # Initialize video writer
@@ -67,31 +54,37 @@ def main(input_video, csv_file, output_video, transition_frames=30):
     last_frame = None
     frame_number = 0
     
+    # Define text properties
+    text = "Day 3, Match 7"
+    start_frame = 0
+    end_frame = int(fps * 2)  # Display text for 2 seconds
+    text_position = (50, height // 2)  # Fixed position for text
+
     while True:
         ret, frame = cap.read()
         if not ret:
             break
         
-        frame = apply_cartoon(frame)
+        # Add text for the first 2 seconds
+        frame = add_text_for_duration(frame, text, frame_number, start_frame, end_frame, text_position)
+
         # Process only frames marked as live (1) in the CSV
         if frame_filter.get(frame_number, 0) == 1:
             # If there’s a gap, add a smooth transition
             if last_frame is not None and frame_number - 1 not in frame_filter:
-             
-                frame = apply_grayscale(frame)
+                
                 transition = create_transition(last_frame, frame, 'fade', transition_frames)
                 for t_frame in transition:
                     out.write(t_frame)
-                    # for _ in range(4):
-                    #     out.write(t_frame)
+                    
             
             # Write the current frame
             out.write(frame)
+
             last_frame = frame
 
         frame_number += 1
-        # # For testing purposes, break after a specific frame
-        if frame_number == 6000:  # Remove or adjust as needed
+        if frame_number == 8000:  # Remove or adjust as needed
             break
 
     # Release resources
@@ -103,7 +96,7 @@ def main(input_video, csv_file, output_video, transition_frames=30):
 # Input parameters
 input_video = "video.mp4"
 csv_file = "smoothed_predictions.csv"
-output_video = "output_video11.mp4"
+output_video = "output_video15.mp4"
 transition_frames = 30
 
 # Call the main function
