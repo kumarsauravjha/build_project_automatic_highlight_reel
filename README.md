@@ -24,7 +24,7 @@ This section walks you through the steps required to generate the final automati
    ```bash
    python3 Code/time_classification.py
    ```
-   
+   If you want to see the output of other models like SVM and XGBoost, you'll need to uncomment those sections. In our case, Logistic Regression has given the best results; hence, other models have been commented out to save the user's time. 
    Upon completion, you should have an updated `predictions_all_new.csv` in the `Data` directory.
 
 2. **Create the Final Highlight Reel**  
@@ -32,13 +32,14 @@ This section walks you through the steps required to generate the final automati
    ```bash
    python3 Code/openCV_create_animation2.py --input_video path/to/your/video.mp4 --csv_file Data/predictions_all_new.csv --output_video pah_to_save_output_video
    ```
-   
+   (openCV_create_animation.py also has the same logic but the arguments are hard-coded)
    This script will integrate the predictive data into a sample output highlight reel, emphasizing key moments from your footage.
 
 ### Final Output
 
 After the scripts have finished running, you’ll find the generated highlight reel ready for review. This final video integrates the processed predictive data to create a polished, viewer-friendly highlight compilation automatically.
 
+Other code files, like animation.py and data_analysis.py are optional and can be executed for the user's exploration of the data and problem statement. 
 ---
 
 *By following the steps above, you’ll quickly and easily recreate the final output reel, benefiting from the project’s automated highlight detection and editing capabilities.*
