@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 # Read the CSV file
-df = pd.read_csv('provided_data.csv')
+df = pd.read_csv('../Data/provided_data.csv')
 
 # Display the first 5 rows
 print(df.head())

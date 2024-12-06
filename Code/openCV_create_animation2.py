@@ -4,6 +4,8 @@ import numpy as np
 import csv
 import pandas as pd
 import matplotlib.pyplot as plt
+import argparse
+
 # %%
 def create_transition(frame1, frame2, transition_type='fade', duration_frames=30):
     """Create a smooth transition between two frames."""
@@ -47,7 +49,7 @@ def main(input_video, csv_file, output_video, transition_frames=30):
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
-    new_fps = int(fps*1.2)
+    new_fps = int(fps * 1.2)
     # Initialize video writer
     out = cv2.VideoWriter(output_video, cv2.VideoWriter_fourcc(*'mp4v'), new_fps, (width, height))
 
@@ -72,19 +74,17 @@ def main(input_video, csv_file, output_video, transition_frames=30):
         if frame_filter.get(frame_number, 0) == 1:
             # If there’s a gap, add a smooth transition
             if last_frame is not None and frame_number - 1 not in frame_filter:
-                
                 transition = create_transition(last_frame, frame, 'fade', transition_frames)
                 for t_frame in transition:
                     out.write(t_frame)
-                    
             
             # Write the current frame
             out.write(frame)
-
             last_frame = frame
 
         frame_number += 1
-        if frame_number == 8000:  # Remove or adjust as needed
+        # Remove or adjust the following line as needed
+        if frame_number == 8000:
             break
 
     # Release resources
@@ -93,13 +93,13 @@ def main(input_video, csv_file, output_video, transition_frames=30):
     print(f"Processed video saved to {output_video}")
 
 # %%
-# Input parameters
-input_video = "../../workshop3/video.mp4"
-csv_file = "../Data/predictions_all_new.csv"
-output_video = "../Data/output_video.mp4"
-transition_frames = 30
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Process a video with transitions based on CSV input.")
+    parser.add_argument("--input_video", type=str, required=True, help="Path to the input video file.")
+    parser.add_argument("--csv_file", type=str, required=True, help="Path to the CSV file containing frame information.")
+    parser.add_argument("--output_video", type=str, required=True, help="Path to the output video file.")
+    parser.add_argument("--transition_frames", type=int, default=30, help="Number of frames to use for transitions.")
 
-# Call the main function
-main(input_video, csv_file, output_video, transition_frames)
+    args = parser.parse_args()
 
-# %%
+    main(args.input_video, args.csv_file, args.output_video, args.transition_frames)

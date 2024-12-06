@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 
 # %%
-df = pd.read_csv('provided_data.csv')
+df = pd.read_csv('../Data/provided_data.csv')
 
 # %%
 df.head()
@@ -51,7 +51,7 @@ print('Animation saved')
 # %%
 def speed_and_acceleration_animation(df):
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-    out = cv2.VideoWriter('speed_acceleration_animation_short.mp4', fourcc, 30.0, (800,600))
+    out = cv2.VideoWriter('../Data/speed_acceleration_animation_short.mp4', fourcc, 30.0, (800,600))
 
     x_min, x_max = df.iloc[:,1].min(), df.iloc[:,1].max()
     y_min, y_max = df.iloc[:,2].min(), df.iloc[:,2].max()
