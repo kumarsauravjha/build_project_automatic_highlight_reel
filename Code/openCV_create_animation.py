@@ -94,9 +94,9 @@ def main(input_video, csv_file, output_video, transition_frames=30):
 
 # %%
 # Input parameters
-input_video = "video.mp4"
-csv_file = "smoothed_predictions.csv"
-output_video = "output_video15.mp4"
+input_video = "../../workshop3/video.mp4"
+csv_file = "../Data/predictions_all_new.csv"
+output_video = "../Data/output_video1.mp4"
 transition_frames = 30
 
 # Call the main function
