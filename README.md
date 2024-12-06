@@ -8,11 +8,6 @@ This repository contains a comprehensive solution for creating **automatic highl
 
 [![Another Demo with effects]](https://drive.google.com/file/d/11Wp242goVy7uF3vQu5haH9_fiUbHLrXN/view?usp=sharing)  
 ---
-
-Below is an example section you can add to your README that provides clear, improved instructions for recreating the final output reel. It integrates the repository’s images (adjust paths as needed) and offers a step-by-step guide:
-
----
-
 ## Recreating the Final Highlight Reel
 
 This section walks you through the steps required to generate the final automatic highlight reel from your video footage, using the provided data and prediction scripts.
