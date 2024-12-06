@@ -38,6 +38,7 @@ This section walks you through the steps required to generate the final automati
 ### Final Output
 
 After the scripts have finished running, you’ll find the generated highlight reel ready for review. This final video integrates the processed predictive data to create a polished, viewer-friendly highlight compilation automatically.
+In case there are frame-drops or janky-looking reel, "filter_predictions.py" can be utilized for smoothing out the output values which utilizes the majority voting sliding window logic by comparison with the ground truth values. 
 
 Other code files, like animation.py and data_analysis.py are optional and can be executed for the user's exploration of the data and problem statement. 
 ---
