@@ -9,6 +9,45 @@ This repository contains a comprehensive solution for creating **automatic highl
 [![Another Demo with effects]](https://drive.google.com/file/d/11Wp242goVy7uF3vQu5haH9_fiUbHLrXN/view?usp=sharing)  
 ---
 
+Below is an example section you can add to your README that provides clear, improved instructions for recreating the final output reel. It integrates the repository’s images (adjust paths as needed) and offers a step-by-step guide:
+
+---
+
+## Recreating the Final Highlight Reel
+
+This section walks you through the steps required to generate the final automatic highlight reel from your video footage, using the provided data and prediction scripts.
+
+### Prerequisites
+
+1. **Data Files:** Ensure you have `provided_data.csv` and `target.csv` placed in the `Data` directory.
+2. **Video Footage:** Have your source video ready and note its file path.
+   
+### Step-by-Step Process
+
+1. **Run the Time Classification Script**  
+   Use `time_classification.py` to analyze the provided data and generate prediction files (/Data/predictions_all_new.csv):
+   ```bash
+   python3 Code/time_classification.py
+   ```
+   
+   Upon completion, you should have an updated `predictions_all_new.csv` in the `Data` directory.
+
+2. **Create the Final Highlight Reel**  
+   With `predictions_all_new.csv` ready, you can now produce the highlight reel. Run `openCV_create_animation2.py` and provide it with the path to your video and predictions file:
+   ```bash
+   python3 Code/openCV_create_animation2.py --input_video path/to/your/video.mp4 --csv_file Data/predictions_all_new.csv --output_video pah_to_save_output_video
+   ```
+   
+   This script will integrate the predictive data into a sample output highlight reel, emphasizing key moments from your footage.
+
+### Final Output
+
+After the scripts have finished running, you’ll find the generated highlight reel ready for review. This final video integrates the processed predictive data to create a polished, viewer-friendly highlight compilation automatically.
+
+---
+
+*By following the steps above, you’ll quickly and easily recreate the final output reel, benefiting from the project’s automated highlight detection and editing capabilities.*
+
 ## **Table of Contents**
 - [Overview](#overview)
 - [Features](#features)
